@@ -17,7 +17,9 @@
  * example: 'Buzz Lightyear' returns 'Lightyear, Buzz'
  */
 function nameShuffle(str) {
-  // write your code here & return value
+  const place = str.indexOf(' ');
+  const formalName = `${str.slice(place + 1)}, ${str.slice(0, place)}`;
+  return formalName;
 }
 
 /**
@@ -35,7 +37,11 @@ function nameShuffle(str) {
  * example: '&', '&' returns true
  */
 function isStrangePair(str1, str2) {
-  // write your code here & return value
+  let result = false;
+  if (str1.slice(0, 1) === str2.slice(-1) || str1.slice(-1) === str2.slice(0, 1)) {
+    result = true;
+  }
+  return result;
 }
 
 /**
@@ -47,7 +53,7 @@ function isStrangePair(str1, str2) {
  * example: '98.6%' returns 0.986
  */
 function convertToDecimal(percent) {
-  // write your code here & return value
+  return Number(percent.slice(0, -1)) * 0.01;
 }
 
 /**
@@ -60,7 +66,18 @@ function convertToDecimal(percent) {
  * example: [1, 2, 3, 4], [4, 3, 2, 1, 5] returns false
  */
 function checkSameSum(a1, a2) {
-  // write your code here & return value
+  let result = false;
+  const sum = [0, 0];
+  for (let i = 0; i < a1.length; i += 1) {
+    sum[0] += a1[i];
+  }
+  for (let i = 0; i < a2.length; i += 1) {
+    sum[1] += a2[i];
+  }
+  if (sum[0] === sum[1]) {
+    result = true;
+  }
+  return result;
 }
 
 /**
@@ -71,7 +88,10 @@ function checkSameSum(a1, a2) {
  * must use a closure to save the username
  */
 function saveLogin(name) {
-  // write your code here
+  return function saveUsername() {
+    const savedName = name;
+    return savedName;
+  };
 }
 
 module.exports = {
